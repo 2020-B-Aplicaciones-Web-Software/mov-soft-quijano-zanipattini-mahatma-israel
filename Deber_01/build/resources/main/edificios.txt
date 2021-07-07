@@ -1,0 +1,5 @@
+1,EdificioABC,5,152.45,2020-07-04,Enrique Segoviano
+2,EdificioXYZ,10,5.01,1020-03-07,Av. Napo
+3,Hotel Lujo,11,400.00,2019-02-01,Curaca y S42
+4,QWE,20,22.5,2020-07-04,La Tola
+5,ABC,23,150.5,1000-12-12,Av. 123
