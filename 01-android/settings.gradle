@@ -1,0 +1,2 @@
+rootProject.name = "mov-soft-2021-a"
+include ':app'
