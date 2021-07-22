@@ -38,8 +38,8 @@
 
     <ListView
         android:id="@+id/lv_edificios"
-        android:layout_width="410dp"
-        android:layout_height="450dp"
+        android:layout_width="406dp"
+        android:layout_height="367dp"
         android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_titulo"
