@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.departamento.CrearDepartamento">
+
+    <Button
+        android:id="@+id/btn_crearDepartamento"
+        android:layout_width="99dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="56dp"
+        android:text="Crear"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_valorDpto"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/txt_valorDpto" />
+
+    <Button
+        android:id="@+id/btn_regresarDepartamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Regresar"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crearDepartamento"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_crearDepartamento"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crearDepartamento" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nombreDpto"
+        app:layout_constraintEnd_toStartOf="@+id/txt_nombreDpto"
+        app:layout_constraintTop_toTopOf="@+id/txt_nombreDpto" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="183dp"
+        android:layout_height="23dp"
+        android:text="Número de habitaciones:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_numHab"
+        app:layout_constraintEnd_toStartOf="@+id/txt_numHab"
+        app:layout_constraintTop_toTopOf="@+id/txt_numHab" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="146dp"
+        android:layout_height="25dp"
+        android:text="Número de baños:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_numBan"
+        app:layout_constraintEnd_toStartOf="@+id/txt_numBan"
+        app:layout_constraintTop_toTopOf="@+id/txt_numBan" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Área (m2):"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_areaDpto"
+        app:layout_constraintEnd_toStartOf="@+id/txt_areaDpto"
+        app:layout_constraintTop_toTopOf="@+id/txt_areaDpto" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor ($):"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_valorDpto"
+        app:layout_constraintEnd_toStartOf="@+id/txt_valorDpto"
+        app:layout_constraintTop_toTopOf="@+id/txt_valorDpto" />
+
+    <EditText
+        android:id="@+id/txt_nombreDpto"
+        android:layout_width="201dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <EditText
+        android:id="@+id/txt_numHab"
+        android:layout_width="79dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nombreDpto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_nombreDpto"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreDpto" />
+
+    <EditText
+        android:id="@+id/txt_numBan"
+        android:layout_width="80dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/txt_numHab"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_numHab"
+        app:layout_constraintTop_toBottomOf="@+id/txt_numHab" />
+
+    <EditText
+        android:id="@+id/txt_areaDpto"
+        android:layout_width="113dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/txt_numBan"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_numBan"
+        app:layout_constraintTop_toBottomOf="@+id/txt_numBan" />
+
+    <EditText
+        android:id="@+id/txt_valorDpto"
+        android:layout_width="159dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/txt_areaDpto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_areaDpto"
+        app:layout_constraintTop_toBottomOf="@+id/txt_areaDpto" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
