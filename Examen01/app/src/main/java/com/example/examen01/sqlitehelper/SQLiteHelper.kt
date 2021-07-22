@@ -36,7 +36,7 @@ class SQLiteHelper(
                     area DECIMAL(4,2),
                     valor DECIMAL(7,2),
                     edificioID INTEGER,
-                    FOREIGN KEY (edificioID) REFERENCES Edificio(id)
+                    FOREIGN KEY (edificioID) REFERENCES Edificio(id) ON DELETE CASCADE
                 )
             """.trimIndent()
         Log.i("BaseDatos", "Creando base de datos")
@@ -77,7 +77,7 @@ class SQLiteHelper(
         return resultadoEscritura.toInt() != -1
     }
 
-    //Read
+    // Read
     fun leerEdificios(): MutableList<Edificio> {
         val scriptLeerEdificios = "SELECT * FROM Edificio"
 
@@ -115,7 +115,7 @@ class SQLiteHelper(
         return listaEdificios
     }
 
-    //Update
+    // Update
     fun actualizarEdificio(
         id: Int, nombre: String,
         numeroPisos: Int, area: Float,
@@ -143,13 +143,13 @@ class SQLiteHelper(
         return resultadoActualizar != -1
     }
 
-    //Delete
+    // Delete
     fun eliminarEdificioPorID(id: Int): Boolean {
         val conexionEscritura = writableDatabase
         val resultadoEliminar = conexionEscritura.delete(
-            "Edificio",
-            "id=?",
-            arrayOf(
+            "Edificio",  // Nombre de la tabla
+            "id=?", // Clausula WHERE
+            arrayOf( // Parametros clausula WHERE
                 id.toString()
             )
         )
@@ -159,7 +159,7 @@ class SQLiteHelper(
 
 
     /* ------------ Departamento ------------ */
-    //Create
+    // Create
     fun crearDepartamento(
         nombre: String, numeroHabitaciones: Int,
         numeroBanos: Int, area: Float,
@@ -184,7 +184,7 @@ class SQLiteHelper(
         return resultadoEscritura.toInt() != -1
     }
 
-    //Read
+    // Read
     fun leerDepartamentos(edificio: Edificio): MutableList<Departamento> {
         val edificioID = edificio.id
         val scriptLeerDepartamentos = "SELECT * FROM Departamento WHERE edificioID=$edificioID"
@@ -211,7 +211,7 @@ class SQLiteHelper(
 
                 if (id != null) {
                     val dpto = Departamento(id, nombre, numHabitaciones, numBanos, area, valor)
-                    dpto.edificio = edificio
+                    dpto.edificio = edificio    // Se asigna el Edificio
                     listaDepartamentos.add(dpto)
                 }
             } while (resultadoLectura.moveToNext()) // Mientras haya mas Departamentos
@@ -223,7 +223,7 @@ class SQLiteHelper(
         return listaDepartamentos
     }
 
-    //Update
+    // Update
     fun actualizarDepartamento(
         id: Int, nombre: String,
         numHabitaciones: Int, numBanos: Int,
@@ -251,13 +251,13 @@ class SQLiteHelper(
         return resultadoActualizar != -1
     }
 
-    //Delete
+    // Delete
     fun eliminarDepartamentoPorID(id: Int): Boolean {
         val conexionEscritura = writableDatabase
         val resultadoEliminar = conexionEscritura.delete(
-            "Departamento",
-            "id=?",
-            arrayOf(
+            "Departamento",  // Nombre de la tabla
+            "id=?", // Clausula WHERE
+            arrayOf( // Parametros clausula WHERE
                 id.toString()
             )
         )

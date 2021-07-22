@@ -15,8 +15,6 @@ import java.text.SimpleDateFormat
 class CrearEdificio : AppCompatActivity() {
 
     val edificioSQL = SQLiteHelper(this)
-    // TODO borrar el sdf si no se usa
-    val sdf = SimpleDateFormat("dd-MM-yyyy")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

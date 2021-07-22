@@ -26,10 +26,10 @@ class Edificio (
     override fun toString(): String {
         val fecha = sdf.format(fechaApertura)
         return "$nombre\n" +
-                "  |-> Pisos: $numeroPisos\n" +
-                "  |-> Area: $areaM2 m2\n" +
-                "  |-> Apertura: $fecha\n" +
-                "  '-> Direccion: $direccion"
+                "   |-> Pisos: $numeroPisos\n" +
+                "   |-> Area: $areaM2 m2\n" +
+                "   |-> Apertura: $fecha\n" +
+                "   '-> Direccion: $direccion"
     }
 
     override fun describeContents(): Int {

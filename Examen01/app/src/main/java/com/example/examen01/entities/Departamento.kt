@@ -27,10 +27,10 @@ class Departamento (
 
     override fun toString(): String {
         return "$nombre\n" +
-                "  |-> Habitaciones: $numeroHabitaciones\n" +
-                "  |-> Banos: $numeroBanos\n" +
-                "  |-> Area: $areaM2 m2\n" +
-                "  '-> Valor: $$valor"
+                "   |-> Habitaciones: $numeroHabitaciones\n" +
+                "   |-> Banos: $numeroBanos\n" +
+                "   |-> Area: $areaM2 m2\n" +
+                "   '-> Valor: $$valor"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
