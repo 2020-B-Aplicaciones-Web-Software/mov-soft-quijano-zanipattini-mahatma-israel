@@ -22,8 +22,6 @@ class CrearEdificio : AppCompatActivity() {
 
         val btnCrear = findViewById<Button>(R.id.btn_crearEdificio)
         btnCrear.setOnClickListener {
-            // TODO Poner un if (fecha cumple con el formato dado)
-            //  else (despliega mensaje que indica que debe poner bien)
             // Campos
             val txtNombre = findViewById<EditText>(R.id.txt_nombre)
             val txtNumPisos = findViewById<EditText>(R.id.txt_numeroPisos)

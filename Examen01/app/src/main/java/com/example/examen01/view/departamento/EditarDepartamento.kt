@@ -43,9 +43,6 @@ class EditarDepartamento : AppCompatActivity() {
 
         val btnActualizar = findViewById<Button>(R.id.btn_editarDepartamento)
         btnActualizar.setOnClickListener {
-            // TODO Poner un if (fecha cumple con el formato dado)
-            //  else (despliega mensaje que indica que debe poner bien)
-
             // Valores
             val nombre = txtNombre.text.toString()
             val numHab = txtNumHabitaciones.text.toString().toInt()

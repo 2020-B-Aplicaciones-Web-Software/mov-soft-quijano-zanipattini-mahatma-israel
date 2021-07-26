@@ -71,7 +71,7 @@ class ListarDepartamentos : AppCompatActivity() {
                 abrirActividadConParametros(EditarDepartamento::class.java, departamento)
                 return true
             }
-            // Eliminar edificio
+            // Eliminar departamento
             R.id.menu_eliminarDpto -> {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Eliminar Departamento")

@@ -42,9 +42,6 @@ class EditarEdificio : AppCompatActivity() {
 
         val btnActualizar = findViewById<Button>(R.id.btn_actualizarEdificio)
         btnActualizar.setOnClickListener {
-            // TODO Poner un if (fecha cumple con el formato dado)
-            //  else (despliega mensaje que indica que debe poner bien)
-
             // Valores
             val nombre = txtNombre.text.toString()
             val numPisos = txtNumPisos.text.toString().toInt()

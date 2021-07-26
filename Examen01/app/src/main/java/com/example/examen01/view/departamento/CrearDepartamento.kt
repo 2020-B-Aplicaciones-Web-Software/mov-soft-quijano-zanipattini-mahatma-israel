@@ -25,8 +25,6 @@ class CrearDepartamento : AppCompatActivity() {
 
         val btnCrear = findViewById<Button>(R.id.btn_crearDepartamento)
         btnCrear.setOnClickListener {
-            // TODO Poner un if (fecha cumple con el formato dado)
-            //  else (despliega mensaje que indica que debe poner bien)
             // Campos
             val txtNombre = findViewById<EditText>(R.id.txt_nombreDpto)
             val txtNumHabitaciones = findViewById<EditText>(R.id.txt_numHab)
