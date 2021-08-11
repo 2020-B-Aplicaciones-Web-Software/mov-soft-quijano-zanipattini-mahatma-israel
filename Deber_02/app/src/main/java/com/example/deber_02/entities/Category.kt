@@ -1,4 +1,4 @@
-package com.example.deber_02
+package com.example.deber_02.entities
 
 class Category(
     val titulo: String?,

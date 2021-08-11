@@ -1,4 +1,4 @@
-package com.example.deber_02
+package com.example.deber_02.recycler_view_adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deber_02.MainActivity
+import com.example.deber_02.R
+import com.example.deber_02.entities.Category
+import com.example.deber_02.entities.Playlist
 
 class CategoryRecyclerViewAdapter(
     private val contexto: MainActivity,

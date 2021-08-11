@@ -1,4 +1,4 @@
-package com.example.deber_02
+package com.example.deber_02.recycler_view_adapters
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deber_02.MainActivity
+import com.example.deber_02.PlaylistActivity
+import com.example.deber_02.R
+import com.example.deber_02.entities.Playlist
 
 class PlaylistRecyclerViewAdapter(
     private val contexto: MainActivity,
@@ -35,9 +39,8 @@ class PlaylistRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val playlist = listaPlaylists[position]
-        // Imagen por defecto si recibe null
-        val imageName = if (playlist.coverName == null)
-            "ic_launcher_background" else playlist.coverName
+        // Imagen por defecto si retgcibe null
+        val imageName = playlist.coverName ?: "ic_launcher_background"
         // Obtiene recurso de imagen
         val img = this.contexto.resources.getIdentifier(
             imageName, "drawable", this.contexto.packageName

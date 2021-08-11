@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/inicio"
+        android:title="Inicio"
+        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/buscar"
+        android:title="Buscar"
+        android:icon="@drawable/search"/>
+    <item
+        android:id="@+id/biblioteca"
+        android:title="Biblioteca"
+        android:icon="@drawable/library"/>
+    <item
+        android:id="@+id/Premium"
+        android:title="Premium"
+        android:icon="@drawable/premium"/>
+</menu>

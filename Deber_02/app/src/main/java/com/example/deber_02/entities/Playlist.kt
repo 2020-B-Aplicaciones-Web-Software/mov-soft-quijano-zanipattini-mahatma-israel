@@ -1,4 +1,4 @@
-package com.example.deber_02
+package com.example.deber_02.entities
 
 import android.os.Parcel
 import android.os.Parcelable

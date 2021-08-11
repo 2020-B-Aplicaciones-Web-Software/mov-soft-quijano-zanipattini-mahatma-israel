@@ -3,6 +3,10 @@ package com.example.deber_02
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deber_02.entities.Category
+import com.example.deber_02.entities.Playlist
+import com.example.deber_02.recycler_view_adapters.CategoryRecyclerViewAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         iniciarRecyclerView(listaCategorias, this, recyclerView)
 
-        // TODO poner la barra de abajo (Home, Buscar, Biblioteca, Premium)
+        val bottomMenu = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomMenu.itemIconTintList = null
+
     }
 
     fun iniciarRecyclerView(
@@ -38,30 +44,22 @@ class MainActivity : AppCompatActivity() {
     // Quemar Datos
     fun llenarDatos(categorias: MutableList<Category>) {
         val listaPlaylists1 = arrayListOf<Playlist>()
-        listaPlaylists1.add(Playlist("Nombre 1", "Descripcion 1", "history"))
-        listaPlaylists1.add(Playlist("Nombre 2", "Descripcion 2", "settings"))
-        listaPlaylists1.add(Playlist("Nombre 3", "Descripcion 3", "ic_launcher_foreground"))
-        listaPlaylists1.add(Playlist("Nombre 4", "Descripcion 4", null))
-        listaPlaylists1.add(Playlist("Nombre 5", "Descripcion 5", "settings"))
-        listaPlaylists1.add(Playlist("Nombre 6", "Descripcion 6", "ic_launcher_foreground"))
+        listaPlaylists1.add(Playlist("Daily Mix 1", "Callejeros, Tierra Santa, Las Pastillas del Abuelo", "daily_mix_1"))
+        listaPlaylists1.add(Playlist("Daily Mix 2", "KISS, Guns N' Roses, Styx y mas", "daily_mix_2"))
+        listaPlaylists1.add(Playlist("Daily Mix 3", "Gustavo Cerati, Los Caligaris, Bersuit", "daily_mix_3"))
+        listaPlaylists1.add(Playlist("Daily Mix 4", "Verde 70, Cabare, La Maquina Camaleon y mas", "daily_mix_4"))
         categorias.add(Category("Daily Mix", listaPlaylists1))
 
         val listaPlaylists2 = arrayListOf<Playlist>()
-        listaPlaylists2.add(Playlist("Nombre 7", "Descripcion 7", "history"))
-        listaPlaylists2.add(Playlist("Nombre 8", "Descripcion 8", "settings"))
-        listaPlaylists2.add(Playlist("Nombre 9", "Descripcion 9", "ic_launcher_foreground"))
-        listaPlaylists2.add(Playlist("Nombre 10", "Descripcion 10", null))
-        listaPlaylists2.add(Playlist("Nombre 11", "Descripcion 11", "settings"))
-        listaPlaylists2.add(Playlist("Nombre 12", "Descripcion 12", "ic_launcher_foreground"))
+        listaPlaylists2.add(Playlist("Tu capsula del tiempo", "Creamos una playlist personalizada para que", "tu_capsula"))
+        listaPlaylists2.add(Playlist("Sin parar", "Tus canciones favoritas del momento", "sin_parar"))
+        listaPlaylists2.add(Playlist("Recuerda y repite", "Tus canciones favoritas del pasado", "recuerda_repite"))
         categorias.add(Category("100% tu", listaPlaylists2))
 
         val listaPlaylists3 = arrayListOf<Playlist>()
-        listaPlaylists3.add(Playlist("Nombre 13", "Descripcion 13", null))
-        listaPlaylists3.add(Playlist("Nombre 14", "Descripcion 14", "settings"))
-        listaPlaylists3.add(Playlist("Nombre 15", "Descripcion 15", "ic_launcher_foreground"))
-        listaPlaylists3.add(Playlist("Nombre 16", "Descripcion 16", null))
-        listaPlaylists3.add(Playlist("Nombre 17", "Descripcion 17", "settings"))
-        listaPlaylists3.add(Playlist("Nombre 18", "Descripcion 18", "ic_launcher_foreground"))
+        listaPlaylists3.add(Playlist("Radio Latina", "Dale play y llénate de nostalgia con estas canciones inolvidables.", "radio_latina"))
+        listaPlaylists3.add(Playlist("Hits Alegres", "¡Tu dosis de energía para alegrarte el día!", "hits_alegres"))
+        listaPlaylists3.add(Playlist("Canta en la ducha", "Tu karaoke personal para darlo todo cantando.", "ducha"))
         categorias.add(Category("Estado de animo", listaPlaylists3))
     }
 }

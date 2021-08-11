@@ -21,8 +21,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_playlists"
-        android:layout_width="359dp"
-        android:layout_height="236dp"
+        android:layout_width="357dp"
+        android:layout_height="232dp"
         app:layout_constraintStart_toStartOf="@+id/tv_tituloCategoria"
         app:layout_constraintTop_toBottomOf="@+id/tv_tituloCategoria" />
 </androidx.constraintlayout.widget.ConstraintLayout>

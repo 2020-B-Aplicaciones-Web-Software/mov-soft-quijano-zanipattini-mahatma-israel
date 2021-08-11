@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="40px">
+
+    <ImageButton
+        android:id="@+id/btn_songHeart"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:backgroundTint="#121212"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/img_songCover"
+        app:layout_constraintStart_toEndOf="@+id/tv_nombreCancion"
+        app:layout_constraintTop_toTopOf="@+id/img_songCover"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/corazon" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#121212"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_songHeart"
+        app:layout_constraintStart_toEndOf="@+id/btn_songHeart"
+        app:layout_constraintTop_toTopOf="@+id/btn_songHeart"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puntos" />
+
+    <ImageView
+        android:id="@+id/img_songCover"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tv_artista"
+        android:layout_width="140dp"
+        android:layout_height="17dp"
+        android:text="Artista"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nombreCancion"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_nombreCancion"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombreCancion" />
+
+    <TextView
+        android:id="@+id/tv_nombreCancion"
+        android:layout_width="180dp"
+        android:layout_height="23dp"
+        android:text="Nombre de la cancion"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.200" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:text="LYRICS"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nombreCancion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_nombreCancion"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombreCancion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
