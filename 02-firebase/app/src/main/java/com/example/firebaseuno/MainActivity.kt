@@ -49,6 +49,21 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, EOrdenes::class.java)
             startActivity(intent)
         }
+
+        val botonExamen = findViewById<Button>(R.id.btn_examen)
+        //botonExamen.setOnClickListener { abrirExamen() }
+
+    }
+
+    fun abrirExamen(rol: String) {
+        if (rol == "usuario") {
+            //val intent = Intent(this, ::class.java)
+            //startActivity(intent)
+        } else if (rol == "restaurante") {
+            //val intent = Intent(this, ::class.java)
+            //startActivity(intent)
+        }
+        // TODO mensaje de error si hay otro usuario
     }
 
     fun llamarLoginUsuario(){
@@ -165,18 +180,21 @@ class MainActivity : AppCompatActivity() {
         val botonSalir = findViewById<Button>(R.id.btn_salir)
         val botonProducto = findViewById<Button>(R.id.btn_producto)
         val botonRestaurante = findViewById<Button>(R.id.btn_restaurante)
+        val botonExamen = findViewById<Button>(R.id.btn_examen)
 
         if(BAuthUsuario.usuario != null){
             botonLogin.visibility = View.INVISIBLE
             botonSalir.visibility = View.VISIBLE
             botonProducto.visibility = View.VISIBLE
             botonRestaurante.visibility = View.VISIBLE
+            botonExamen.visibility = View.VISIBLE
             textViewBienvenida.text = "Bienvenido ${BAuthUsuario.usuario?.email}"
         } else {
             botonLogin.visibility = View.VISIBLE
             botonSalir.visibility = View.INVISIBLE
             botonProducto.visibility = View.INVISIBLE
             botonRestaurante.visibility = View.INVISIBLE
+            botonExamen.visibility = View.INVISIBLE
             textViewBienvenida.text = "Ingresa al aplicativo"
         }
     }

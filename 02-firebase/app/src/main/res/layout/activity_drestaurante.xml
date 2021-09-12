@@ -30,4 +30,35 @@
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="@+id/et_nombre_restaurante"
         app:layout_constraintTop_toBottomOf="@+id/et_nombre_restaurante" />
+
+    <Button
+        android:id="@+id/btn_datos_prueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Datos prueba"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_restaurante"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_restaurante"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crear_restaurante" />
+
+    <Button
+        android:id="@+id/btn_consultar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Consultar"
+        app:layout_constraintEnd_toEndOf="@+id/btn_datos_prueba"
+        app:layout_constraintStart_toStartOf="@+id/btn_datos_prueba"
+        app:layout_constraintTop_toBottomOf="@+id/btn_datos_prueba" />
+
+    <Button
+        android:id="@+id/btn_transaccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Transaccion"
+        app:layout_constraintEnd_toEndOf="@+id/btn_consultar"
+        app:layout_constraintStart_toStartOf="@+id/btn_consultar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_consultar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

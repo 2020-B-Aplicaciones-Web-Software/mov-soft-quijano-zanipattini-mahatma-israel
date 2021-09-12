@@ -93,4 +93,15 @@
         app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="@+id/lv_lista_productos"
         app:layout_constraintTop_toBottomOf="@+id/lv_lista_productos" />
+
+    <TextView
+        android:id="@+id/tv_total_pedido"
+        android:layout_width="191dp"
+        android:layout_height="21dp"
+        android:text="Total del pedido: $0.00"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/lv_lista_productos"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/lv_lista_productos"
+        app:layout_constraintTop_toBottomOf="@+id/lv_lista_productos" />
 </androidx.constraintlayout.widget.ConstraintLayout>
