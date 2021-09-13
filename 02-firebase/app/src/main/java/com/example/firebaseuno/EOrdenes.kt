@@ -3,6 +3,7 @@ package com.example.firebaseuno
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AlertDialog
 import com.example.firebaseuno.entities.ProductoOrden
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.collections.ArrayList
 
 class EOrdenes : AppCompatActivity() {
 
@@ -55,10 +58,11 @@ class EOrdenes : AppCompatActivity() {
                 menuProductos.adapter = adapterProductos
             }
 
-
-
         val botonAdd = findViewById<Button>(R.id.btn_anadir_lista_producto)
         botonAdd.setOnClickListener { agregarProducto(productosAgregados) }
+
+        val botonCompletarPedido = findViewById<Button>(R.id.btn_completar_pedido)
+        botonCompletarPedido.setOnClickListener{ crearOrden() }
     }
 
     fun agregarProducto(productosAgregados: MutableList<ProductoOrden>) {
@@ -87,6 +91,36 @@ class EOrdenes : AppCompatActivity() {
 
     }
 
+    fun crearOrden() {
+        // Fecha del pedido
+        val fechaPedido = Calendar.getInstance().time
+        Log.i("fecha", fechaPedido.toString())
+        // Total
+        // Calificacion
+        // Estado
+        // Usuario
+        // Restaurante
+        // Productos
+        /*
+        // Nueva orden
+        val nuevaOrden = hashMapOf<String, Any>(
+
+        )
+
+        // Escritura en la base de datos
+        val db = Firebase.firestore
+        val referencia = db.collection("orden")
+        referencia
+            .add(nuevaOrden)
+            .addOnSuccessListener {
+                // CLEAR
+            }
+            .addOnFailureListener {
+                // TODO mensaje de error
+            }
+         */
+    }
+
     fun actualizarDatos() {
         // ListView
         val listViewAdapter = ArrayAdapter(
@@ -107,11 +141,7 @@ class EOrdenes : AppCompatActivity() {
     }
 
     // Menu Contextual
-    override fun onCreateContextMenu(
-        menu: ContextMenu?,
-        v: View?,
-        menuInfo: ContextMenu.ContextMenuInfo?
-    ) {
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
 
         val inflater = menuInflater
