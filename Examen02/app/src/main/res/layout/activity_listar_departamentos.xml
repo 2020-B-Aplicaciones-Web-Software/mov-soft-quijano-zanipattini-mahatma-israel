@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.departamento.ListarDepartamentos">
+
+    <TextView
+        android:id="@+id/tv_nombreEdificio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre Edificio"
+        android:textColor="#673AB7"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <Button
+        android:id="@+id/btn_pantallaCrearDepartamento"
+        android:layout_width="165dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:text="Crear departamento"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nombreEdificio"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="@+id/tv_nombreEdificio"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombreEdificio" />
+
+    <ListView
+        android:id="@+id/lv_departamentos"
+        android:layout_width="326dp"
+        android:layout_height="305dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_regresarInicio"
+        app:layout_constraintStart_toStartOf="@+id/btn_regresarInicio"
+        app:layout_constraintTop_toBottomOf="@+id/btn_regresarInicio" />
+
+    <Button
+        android:id="@+id/btn_regresarInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Regresar"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/btn_pantallaCrearDepartamento"
+        app:layout_constraintStart_toStartOf="@+id/btn_pantallaCrearDepartamento"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pantallaCrearDepartamento" />
+
+    <TextView
+        android:id="@+id/tv_msjDpto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No existen registros"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.edificio.EditarEdificio">
+
+    <EditText
+        android:id="@+id/txt_nuevaArea"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nuevoNumPisos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_nuevoNumPisos"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nuevoNumPisos" />
+
+    <Button
+        android:id="@+id/btn_regresarEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Regresar"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/btn_actualizarEdificio"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toStartOf="@+id/btn_actualizarEdificio"
+        app:layout_constraintTop_toBottomOf="@+id/btn_actualizarEdificio" />
+
+    <EditText
+        android:id="@+id/txt_nuevoNumPisos"
+        android:layout_width="109dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nuevoNombre"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_nuevoNombre"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nuevoNombre" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dirección:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nuevaDireccion"
+        app:layout_constraintEnd_toStartOf="@+id/txt_nuevaDireccion"
+        app:layout_constraintTop_toTopOf="@+id/txt_nuevaDireccion" />
+
+    <EditText
+        android:id="@+id/txt_nuevaDireccion"
+        android:layout_width="228dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nuevaFecha"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_nuevaFecha"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nuevaFecha" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Área (m2):"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nuevaArea"
+        app:layout_constraintEnd_toStartOf="@+id/txt_nuevaArea"
+        app:layout_constraintTop_toTopOf="@+id/txt_nuevaArea"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <Button
+        android:id="@+id/btn_actualizarEdificio"
+        android:layout_width="117dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="40dp"
+        android:text="Actualizar"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nuevaDireccion"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nuevaDireccion" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nuevoNombre"
+        app:layout_constraintEnd_toStartOf="@+id/txt_nuevoNombre"
+        app:layout_constraintTop_toTopOf="@+id/txt_nuevoNombre"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <EditText
+        android:id="@+id/txt_nuevoNombre"
+        android:layout_width="230dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133" />
+
+    <EditText
+        android:id="@+id/txt_nuevaFecha"
+        android:layout_width="162dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nuevaArea"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_nuevaArea"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nuevaArea" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de apertura:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nuevaFecha"
+        app:layout_constraintEnd_toStartOf="@+id/txt_nuevaFecha"
+        app:layout_constraintTop_toTopOf="@+id/txt_nuevaFecha"
+        app:layout_constraintVertical_bias="0.416" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de pisos:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nuevoNumPisos"
+        app:layout_constraintEnd_toStartOf="@+id/txt_nuevoNumPisos"
+        app:layout_constraintTop_toTopOf="@+id/txt_nuevoNumPisos"
+        app:layout_constraintVertical_bias="0.481" />
+</androidx.constraintlayout.widget.ConstraintLayout>
