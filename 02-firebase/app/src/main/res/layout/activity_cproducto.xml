@@ -27,7 +27,7 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="Ingrese precio"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/et_nombre_producto"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_nombre_producto"

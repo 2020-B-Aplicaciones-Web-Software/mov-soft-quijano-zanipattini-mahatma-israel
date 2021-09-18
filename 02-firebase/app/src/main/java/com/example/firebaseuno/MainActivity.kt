@@ -11,7 +11,6 @@ import android.widget.TextView
 import com.example.firebaseuno.dto.FirestoreUsuarioDto
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -50,18 +49,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val botonExamen = findViewById<Button>(R.id.btn_examen)
-        //botonExamen.setOnClickListener { abrirExamen() }
+        val botonMapa = findViewById<Button>(R.id.btn_ir_mapa)
+        botonMapa.setOnClickListener {
+            val intent = Intent(this, FMapsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val botonTarea = findViewById<Button>(R.id.btn_tarea)
+        botonTarea.setOnClickListener { abrirExamen() }
 
     }
 
-    fun abrirExamen(rol: String) {
-        if (rol == "usuario") {
-            //val intent = Intent(this, ::class.java)
-            //startActivity(intent)
-        } else if (rol == "restaurante") {
-            //val intent = Intent(this, ::class.java)
-            //startActivity(intent)
+    fun abrirExamen() {
+        if (BAuthUsuario.usuario!!.roles.contains("restaurante")) {
+            val intent = Intent(this, GestionarOrdenes::class.java)
+            startActivity(intent)
+        } else if (BAuthUsuario.usuario!!.roles.contains("usuario")) {
+            val intent = Intent(this, VisualizarOrdenes::class.java)
+            startActivity(intent)
         }
         // TODO mensaje de error si hay otro usuario
     }
@@ -116,6 +121,7 @@ class MainActivity : AppCompatActivity() {
         if (usuario.email != null && usuarioLogeado != null) {
             val db = Firebase.firestore // Obtener referencia
             val rolesUsuario = arrayListOf("usuario") // Arreglo con los permisos
+            //val rolesUsuario = arrayListOf("restaurante") // Arreglo con los permisos
             val nuevoUsuario = hashMapOf<String, Any>(
                 "roles" to rolesUsuario,
                 "uid" to usuarioLogeado.uid,
@@ -180,7 +186,8 @@ class MainActivity : AppCompatActivity() {
         val botonSalir = findViewById<Button>(R.id.btn_salir)
         val botonProducto = findViewById<Button>(R.id.btn_producto)
         val botonRestaurante = findViewById<Button>(R.id.btn_restaurante)
-        val botonExamen = findViewById<Button>(R.id.btn_examen)
+        val botonOrden = findViewById<Button>(R.id.btn_orden)
+        val botonExamen = findViewById<Button>(R.id.btn_tarea)
 
         if(BAuthUsuario.usuario != null){
             botonLogin.visibility = View.INVISIBLE
@@ -188,6 +195,7 @@ class MainActivity : AppCompatActivity() {
             botonProducto.visibility = View.VISIBLE
             botonRestaurante.visibility = View.VISIBLE
             botonExamen.visibility = View.VISIBLE
+            botonOrden.visibility = View.VISIBLE
             textViewBienvenida.text = "Bienvenido ${BAuthUsuario.usuario?.email}"
         } else {
             botonLogin.visibility = View.VISIBLE
@@ -195,6 +203,7 @@ class MainActivity : AppCompatActivity() {
             botonProducto.visibility = View.INVISIBLE
             botonRestaurante.visibility = View.INVISIBLE
             botonExamen.visibility = View.INVISIBLE
+            botonOrden.visibility = View.INVISIBLE
             textViewBienvenida.text = "Ingresa al aplicativo"
         }
     }

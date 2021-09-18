@@ -9,17 +9,21 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import com.example.firebaseuno.entities.ProductoOrden
+import com.example.firebaseuno.entities.Orden
+import com.example.firebaseuno.entities.Producto
+import com.example.firebaseuno.entities.Restaurante
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class EOrdenes : AppCompatActivity() {
 
     var posicionItemSeleccionado = 0
-    // ProductoOrden
-    val productosAgregados: MutableList<ProductoOrden> = ArrayList()
+    val productosAgregados: MutableList<Producto> = ArrayList()
+    val listaRestaurantes: MutableList<Restaurante> = ArrayList()
+    val listaProductos: MutableList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +37,15 @@ class EOrdenes : AppCompatActivity() {
         val referenciaProductos = db.collection("producto")
 
         // Restaurantes
-        val listaRestaurantes: MutableList<String> = ArrayList()
         val menuRestaurantes = findViewById<View>(R.id.sp_restaurantes) as Spinner
         referenciaRestaurantes.get()
             .addOnSuccessListener { result ->
-                result.forEach { listaRestaurantes.add(it.data["nombre"].toString()) }
+                result.forEach { listaRestaurantes.add(
+                    Restaurante(
+                        it.data["nombre"].toString(),
+                        it.id
+                    )
+                ) }
                 val adapterRestaurantes = ArrayAdapter(
                     this, android.R.layout.simple_spinner_item, listaRestaurantes
                 )
@@ -46,7 +54,6 @@ class EOrdenes : AppCompatActivity() {
             }
 
         // Productos
-        val listaProductos: MutableList<String> = ArrayList()
         val menuProductos = findViewById<View>(R.id.sp_productos) as Spinner
         referenciaProductos.get()
             .addOnSuccessListener { result ->
@@ -65,60 +72,89 @@ class EOrdenes : AppCompatActivity() {
         botonCompletarPedido.setOnClickListener{ crearOrden() }
     }
 
-    fun agregarProducto(productosAgregados: MutableList<ProductoOrden>) {
-        val menuRestaurantes = findViewById<View>(R.id.sp_restaurantes) as Spinner
+    fun agregarProducto(productosAgregados: MutableList<Producto>) {
         val menuProductos = findViewById<View>(R.id.sp_productos) as Spinner
         val cantidadText = findViewById<EditText>(R.id.et_cantidad_producto)
 
         val db = Firebase.firestore
         val referenciaProductos = db.collection("producto")
         var precioUnitario: Float = 0.0f
+        var uidProducto: String = ""
         referenciaProductos
             .whereEqualTo("nombre", menuProductos.selectedItem.toString())
             .get()
             .addOnSuccessListener { docs ->
-                docs.forEach { precioUnitario = it.data["precio"].toString().toFloat() }
+                docs.forEach {
+                    precioUnitario = it.data["precio"].toString().toFloat()
+                    uidProducto = it.id
+                }
                 productosAgregados.add(
-                    ProductoOrden(
-                        menuRestaurantes.selectedItem.toString(),
+                    Producto(
                         menuProductos.selectedItem.toString(),
                         precioUnitario,
-                        cantidadText.text.toString().toInt()
+                        cantidadText.text.toString().toInt(),
+                        uidProducto
                     )
                 )
                 actualizarDatos()
             }
-
     }
 
     fun crearOrden() {
-        // Fecha del pedido
-        val fechaPedido = Calendar.getInstance().time
-        Log.i("fecha", fechaPedido.toString())
-        // Total
-        // Calificacion
-        // Estado
-        // Usuario
-        // Restaurante
-        // Productos
-        /*
-        // Nueva orden
-        val nuevaOrden = hashMapOf<String, Any>(
+        if (productosAgregados.size == 0) {
+            // TODO mensaje de que esta vacio
+        } else {
+            // Fecha del pedido
+            val fechaPedido = Calendar.getInstance().time
+            // Total
+            val total = calcularTotalPedido()
+            // Estado
+            val estadoPorDefecto = Orden.POR_RECIBIR
+            // Usuario
+            val usuario = BAuthUsuario.usuario!!.email
+            // Restaurante
+            val menuRestaurantes = findViewById<View>(R.id.sp_restaurantes) as Spinner
+            val restauranteSeleccionado = listaRestaurantes[menuRestaurantes.selectedItemPosition]
+            val restaurante = hashMapOf<String, Any>(
+                "nombre" to restauranteSeleccionado.nombre,
+                "uid" to restauranteSeleccionado.uid
+            )
+            // Productos
+            val productos: MutableList< HashMap<String, Any> > = ArrayList()
+            productosAgregados.forEach {productos.add(
+                hashMapOf(
+                    "nombre" to it.nombre,
+                    "precio" to it.precio,
+                    "cantidad" to it.cantidad,
+                    "uid" to it.uid
+                )
+            )}
 
-        )
+            // Nueva orden
+            val nuevaOrden = hashMapOf<String, Any>(
+                "fechaPedido" to fechaPedido.toString(),
+                "total" to total,
+                "estado" to estadoPorDefecto,
+                "usuario" to usuario,
+                "restaurante" to restaurante,
+                "productos" to productos
+            )
 
-        // Escritura en la base de datos
-        val db = Firebase.firestore
-        val referencia = db.collection("orden")
-        referencia
-            .add(nuevaOrden)
-            .addOnSuccessListener {
-                // CLEAR
-            }
-            .addOnFailureListener {
-                // TODO mensaje de error
-            }
-         */
+            // Escritura en la base de datos
+            val db = Firebase.firestore
+            val referencia = db.collection("orden")
+            referencia
+                .add(nuevaOrden)
+                .addOnSuccessListener {
+                    productosAgregados.clear()
+                    actualizarDatos()
+                    val cantidadText = findViewById<EditText>(R.id.et_cantidad_producto)
+                    cantidadText.text.clear()
+                }
+                .addOnFailureListener {
+                    // TODO mensaje de error
+                }
+        }
     }
 
     fun actualizarDatos() {
@@ -135,9 +171,12 @@ class EOrdenes : AppCompatActivity() {
     }
 
     fun calcularTotalPedido(): Float {
-        return productosAgregados
-            .map{it.precioUnitario * it.cantidad}
-            .reduce { acc, precio -> return@reduce (acc + precio)}
+        if (productosAgregados.size > 0) {
+            return productosAgregados
+                .map{it.precio * it.cantidad}
+                .reduce { acc, precio -> return@reduce (acc + precio)}
+        } else
+            return 0.0f
     }
 
     // Menu Contextual
@@ -158,7 +197,7 @@ class EOrdenes : AppCompatActivity() {
             R.id.menu_eliminar -> {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Eliminar producto")
-                builder.setMessage("¿Esta seguro que quiere eliminar el producto ${productosAgregados[posicionItemSeleccionado].producto}?")
+                builder.setMessage("¿Esta seguro que quiere eliminar el producto ${productosAgregados[posicionItemSeleccionado].nombre}?")
                 builder.setPositiveButton(
                     "Si",
                     DialogInterface.OnClickListener { dialog, which ->

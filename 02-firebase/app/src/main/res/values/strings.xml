@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FIREBASEUNO</string>
+    <string-array name="string_array_opciones_calificacion">
+        <item>Muy bueno</item>
+        <item>Regular</item>
+        <item>Malo</item>
+    </string-array>
 </resources>

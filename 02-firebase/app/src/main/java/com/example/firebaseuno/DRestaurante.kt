@@ -37,6 +37,7 @@ class DRestaurante : AppCompatActivity() {
         val nuevoRestaurante = hashMapOf<String, Any>(
             "nombre" to editTextNombre.text.toString()
         )
+
         val db = Firebase.firestore
         val referencia = db.collection("restaurante")
         referencia
