@@ -1,4 +1,4 @@
-package com.example.examen01.entities
+package com.example.examen02.entities
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class Edificio (
-    var id: Int,
+    var id: String?,
     var nombre: String?,
     var numeroPisos: Int,
     var areaM2: Float,
@@ -15,7 +15,7 @@ class Edificio (
 ) : Parcelable{
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readInt(),
         parcel.readFloat(),
@@ -37,7 +37,7 @@ class Edificio (
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeString(id)
         parcel.writeString(nombre)
         parcel.writeInt(numeroPisos)
         parcel.writeFloat(areaM2)

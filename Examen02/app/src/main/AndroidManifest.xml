@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.examen01">
+    package="com.example.examen02">
 
     <application
         android:allowBackup="true"
@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen01">
-        <activity android:name=".view.departamento.EditarDepartamento"></activity>
-        <activity android:name=".view.departamento.CrearDepartamento" />
-        <activity android:name=".view.departamento.ListarDepartamentos" />
-        <activity android:name=".view.edificio.EditarEdificio" />
-        <activity android:name=".view.edificio.CrearEdificio" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.examen02.view.departamento.EditarDepartamento"></activity>
+        <activity android:name="com.example.examen02.view.departamento.CrearDepartamento" />
+        <activity android:name="com.example.examen02.view.departamento.ListarDepartamentos" />
+        <activity android:name="com.example.examen02.view.edificio.EditarEdificio" />
+        <activity android:name="com.example.examen02.view.edificio.CrearEdificio" />
+        <activity android:name="com.example.examen02.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

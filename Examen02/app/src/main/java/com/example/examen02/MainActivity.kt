@@ -1,4 +1,4 @@
-package com.example.examen01
+package com.example.examen02
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -9,17 +9,23 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import com.example.examen01.entities.Edificio
-import com.example.examen01.sqlitehelper.SQLiteHelper
-import com.example.examen01.view.departamento.ListarDepartamentos
-import com.example.examen01.view.edificio.CrearEdificio
-import com.example.examen01.view.edificio.EditarEdificio
+import com.example.examen02.entities.Edificio
+import com.example.examen02.persistence.FirestoreDB
+import com.example.examen02.view.departamento.ListarDepartamentos
+import com.example.examen02.view.edificio.CrearEdificio
+import com.example.examen02.view.edificio.EditarEdificio
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentReference
 
 class MainActivity : AppCompatActivity() {
 
-    val helper = SQLiteHelper(this)
+    // Edificios
+    val listaEdificios: MutableList<Edificio> = ArrayList()
     var itemIndex = 0
+    // Intent
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
+    // View
+    lateinit var listViewEdificios: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +39,59 @@ class MainActivity : AppCompatActivity() {
         val txtMsj = findViewById<TextView>(R.id.tv_msjEdificio)
         txtMsj.setVisibility(View.GONE)
 
-        val listaEdificios = findViewById<ListView>(R.id.lv_edificios)
-        cargarDatos(listaEdificios)
-        registerForContextMenu(listaEdificios)
+        listViewEdificios = findViewById(R.id.lv_edificios)
+        leerEdificios()
+        registerForContextMenu(listViewEdificios)
 
+    }
+
+    // Read
+    fun leerEdificios() {
+        FirestoreDB.coleccionEdificio
+            .get()
+            .addOnSuccessListener { documents ->
+                documents.forEach { doc ->
+                    val fechaApertura = doc["fechaApertura"] as Timestamp
+                    listaEdificios.add(Edificio(
+                        doc["id"].toString(),
+                        doc["nombre"].toString(),
+                        doc["numeroPisos"].toString().toInt(),
+                        doc["areaM2"].toString().toFloat(),
+                        fechaApertura.toDate(),
+                        doc["direccion"].toString()
+                    ))
+                }
+                actualizarListView()
+            }
+    }
+
+    // Delete
+    fun eliminarEdificio(edificioID: String) {
+        // Eliminar todos los Departamentos del Edificio
+        val subcoleccion = FirestoreDB.subcoleccionDepartamento(edificioID)
+        subcoleccion
+            .get()
+            .addOnSuccessListener { documents ->
+                val departamentosID: MutableList<String> = ArrayList()
+                documents.forEach { doc ->
+                    departamentosID.add(doc["id"].toString())
+                }
+                departamentosID.forEach {
+                    subcoleccion.document(it)
+                        .delete()
+                }
+            }
+            // Eliminar Edificio
+            .addOnCompleteListener {
+                FirestoreDB.coleccionEdificio
+                    .document(edificioID)
+                    .delete()
+                    .addOnSuccessListener {
+                        val msj = Toast.makeText(this, "Registro eliminado", Toast.LENGTH_SHORT)
+                        msj.show()
+                        actualizarListView()
+                    }
+            }
     }
 
     override fun onCreateContextMenu(
@@ -54,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         // Se obtiene el edificio seleccionado
-        val edificio = helper.leerEdificios()[itemIndex]
+        val edificio = listaEdificios[itemIndex]
         return when (item?.itemId) {
             // Ver departamentos
             R.id.menu_departamentos -> {
@@ -72,13 +127,9 @@ class MainActivity : AppCompatActivity() {
                 builder.setTitle("Eliminar Edificio")
                 builder.setMessage("Esta seguro de querer eliminar el edificio ${edificio.nombre}")
 
-                builder.setPositiveButton(
-                    "Si",
-                    DialogInterface.OnClickListener{dialog, which ->
-                        helper.eliminarEdificioPorID(edificio.id)
-                        cargarDatos(findViewById<ListView>(R.id.lv_edificios))
-                    }
-                )
+                builder.setPositiveButton("Si") { _, _ ->
+                    eliminarEdificio(edificio!!.id!!)
+                }
 
                 builder.setNegativeButton("No", null)
                 val dialogo = builder.create()
@@ -101,14 +152,13 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intentExplicito, CODIGO_RESPUESTA_INTENT_EXPLICITO)
     }
 
-    fun cargarDatos(lista: ListView) {
-        val edificios = helper.leerEdificios()
-        lista.adapter = ArrayAdapter(
+    fun actualizarListView() {
+        listViewEdificios.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            edificios
+            listaEdificios
         )
-        if (edificios.size == 0) {
+        if (listaEdificios.size == 0) {
             val txtMsj = findViewById<TextView>(R.id.tv_msjEdificio)
             txtMsj.setVisibility(View.VISIBLE)
             txtMsj.setText("No hay edificios registrados")

@@ -1,10 +1,10 @@
-package com.example.examen01.entities
+package com.example.examen02.entities
 
 import android.os.Parcel
 import android.os.Parcelable
 
 class Departamento (
-    var id: Int,
+    var id: String?,
     var nombre: String?,
     var numeroHabitaciones: Int,
     var numeroBanos: Int,
@@ -15,7 +15,7 @@ class Departamento (
     var edificio: Edificio? = null
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readInt(),
         parcel.readInt(),
@@ -34,7 +34,7 @@ class Departamento (
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeString(id)
         parcel.writeString(nombre)
         parcel.writeInt(numeroHabitaciones)
         parcel.writeInt(numeroBanos)

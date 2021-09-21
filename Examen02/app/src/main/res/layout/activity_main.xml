@@ -38,8 +38,8 @@
 
     <ListView
         android:id="@+id/lv_edificios"
-        android:layout_width="314dp"
-        android:layout_height="357dp"
+        android:layout_width="353dp"
+        android:layout_height="371dp"
         android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_titulo"
@@ -52,10 +52,11 @@
         android:id="@+id/btn_pantallaCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="108dp"
         android:text="Crear edificio"
         app:layout_constraintBottom_toBottomOf="@+id/tv_titulo"
         app:layout_constraintStart_toEndOf="@+id/tv_titulo"
-        app:layout_constraintTop_toTopOf="@+id/tv_titulo" />
+        app:layout_constraintTop_toTopOf="@+id/tv_titulo"
+        app:layout_constraintVertical_bias="0.619" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
