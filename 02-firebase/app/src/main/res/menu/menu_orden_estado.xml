@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_estado_preparando"
+        android:title="Preparando"
+        android:visible="false" />
+    <item
+        android:id="@+id/menu_estado_enviado"
+        android:title="Enviado"
+        android:visible="false" />
+    <item
+        android:id="@+id/menu_estado_cancelado"
+        android:title="Cancelado" />
+</menu>
