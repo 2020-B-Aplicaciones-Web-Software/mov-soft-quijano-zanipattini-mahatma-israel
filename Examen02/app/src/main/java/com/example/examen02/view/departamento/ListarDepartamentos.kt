@@ -65,7 +65,9 @@ class ListarDepartamentos : AppCompatActivity() {
                         doc["numeroHabitaciones"].toString().toInt(),
                         doc["numeroBanos"].toString().toInt(),
                         doc["areaM2"].toString().toFloat(),
-                        doc["valor"].toString().toFloat()
+                        doc["valor"].toString().toFloat(),
+                        doc["latitud"].toString().toFloat(),
+                        doc["longitud"].toString().toFloat(),
                     )
                     dpto.edificio = edificio
                     listaDepartamentos.add(dpto)
@@ -124,6 +126,11 @@ class ListarDepartamentos : AppCompatActivity() {
                 dialogo.show()
                 return true
             }
+            // Ver ubicacion (mapa)
+            R.id.menu_mapa -> {
+                abrirActividadConParametros(MapaDepartamento::class.java, departamento)
+                return true
+            }
             else -> super.onContextItemSelected(item)
         }
     }
@@ -139,7 +146,7 @@ class ListarDepartamentos : AppCompatActivity() {
             intentExplicito.putExtra("edificio", objeto)
         else if (objeto is Departamento) {
             intentExplicito.putExtra("departamento", objeto)
-            intentExplicito.putExtra("edificioID", edificio.id)
+            intentExplicito.putExtra("edificio", edificio)
         }
         startActivityForResult(intentExplicito, CODIGO_RESPUESTA_INTENT_EXPLICITO)
     }

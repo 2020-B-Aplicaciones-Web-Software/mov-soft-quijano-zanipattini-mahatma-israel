@@ -27,7 +27,7 @@ class Edificio (
         val fecha = sdf.format(fechaApertura)
         return "$nombre\n" +
                 "   |-> Pisos: $numeroPisos\n" +
-                "   |-> Area: $areaM2 m2\n" +
+                "   |-> Area: $areaM2 m²\n" +
                 "   |-> Apertura: $fecha\n" +
                 "   '-> Direccion: $direccion"
     }

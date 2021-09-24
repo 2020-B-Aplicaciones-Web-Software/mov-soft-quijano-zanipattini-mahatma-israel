@@ -16,22 +16,24 @@ class EditarDepartamento : AppCompatActivity() {
     // Intent
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
     lateinit var dpto: Departamento
-    lateinit var edificioID: String
+    lateinit var edificio: Edificio
     // Campos
     lateinit var txtNombre: EditText
     lateinit var txtNumHabitaciones: EditText
     lateinit var txtNumBanos: EditText
     lateinit var txtArea: EditText
     lateinit var txtValor: EditText
+    lateinit var txtLatitud: EditText
+    lateinit var txtLongitud: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_departamento)
 
         // Departamento recibido
-        dpto = intent.getParcelableExtra<Departamento>("departamento")!!
+        dpto = intent.getParcelableExtra("departamento")!!
         // ID edificio
-        edificioID = intent.getStringExtra("edificioID")!!
+        edificio = intent.getParcelableExtra("edificio")!!
 
         // Campos
         txtNombre = findViewById(R.id.txt_nuevoNombreDpto)
@@ -39,6 +41,8 @@ class EditarDepartamento : AppCompatActivity() {
         txtNumBanos = findViewById(R.id.txt_nuevoNumBan)
         txtArea = findViewById(R.id.txt_nuevaAreaDpto)
         txtValor = findViewById(R.id.txt_nuevoValorDpto)
+        txtLatitud = findViewById(R.id.txt_nuevaLatitud)
+        txtLongitud = findViewById(R.id.txt_nuevaLongitud)
 
         // Se rellenan los campos
         txtNombre.setText(dpto?.nombre)
@@ -46,6 +50,8 @@ class EditarDepartamento : AppCompatActivity() {
         txtNumBanos.setText(dpto?.numeroBanos.toString())
         txtArea.setText(dpto?.areaM2.toString())
         txtValor.setText(dpto?.valor.toString())
+        txtLatitud.setText(dpto?.latitud.toString())
+        txtLongitud.setText(dpto?.longitud.toString())
 
         val btnActualizar = findViewById<Button>(R.id.btn_editarDepartamento)
         btnActualizar.setOnClickListener {
@@ -55,10 +61,12 @@ class EditarDepartamento : AppCompatActivity() {
             val numBanos = txtNumBanos.text.toString().toInt()
             val area = txtArea.text.toString().toFloat()
             val valor = txtValor.text.toString().toFloat()
+            val latitud = txtLatitud.text.toString().toFloat()
+            val longitud = txtLongitud.text.toString().toFloat()
 
             // Actualizacion
             actualizarDepartamento(
-                Departamento(dpto!!.id!!, nombre, numHab, numBanos, area, valor)
+                Departamento(dpto!!.id!!, nombre, numHab, numBanos, area, valor, latitud, longitud)
             )
         }
 
@@ -73,13 +81,15 @@ class EditarDepartamento : AppCompatActivity() {
         var mensaje = ""
         FirestoreDB.db.runTransaction { transaction ->
             transaction.update(
-                FirestoreDB.subcoleccionDepartamento(edificioID).document(departamento!!.id!!),
+                FirestoreDB.subcoleccionDepartamento(edificio!!.id!!).document(departamento!!.id!!),
                 mapOf(
                     "nombre" to departamento.nombre,
                     "numeroHabitaciones" to departamento.numeroHabitaciones,
                     "numeroBanos" to departamento.numeroBanos,
                     "areaM2" to departamento.areaM2,
-                    "valor" to departamento.valor
+                    "valor" to departamento.valor,
+                    "latitud" to departamento.latitud,
+                    "longitud" to departamento.longitud,
                 )
             )
         }

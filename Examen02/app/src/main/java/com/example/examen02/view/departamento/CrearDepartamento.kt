@@ -20,6 +20,8 @@ class CrearDepartamento : AppCompatActivity() {
     lateinit var txtNumBanos: EditText
     lateinit var txtArea: EditText
     lateinit var txtValor: EditText
+    lateinit var txtLatitud: EditText
+    lateinit var txtLongitud: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class CrearDepartamento : AppCompatActivity() {
             txtNumBanos = findViewById(R.id.txt_numBan)
             txtArea = findViewById(R.id.txt_areaDpto)
             txtValor = findViewById(R.id.txt_valorDpto)
+            txtLatitud = findViewById(R.id.txt_latitud)
+            txtLongitud = findViewById(R.id.txt_Longitud)
 
             // Valores
             val nombre = txtNombre.text.toString()
@@ -43,10 +47,12 @@ class CrearDepartamento : AppCompatActivity() {
             val numBanos = txtNumBanos.text.toString().toInt()
             val area = txtArea.text.toString().toFloat()
             val valor = txtValor.text.toString().toFloat()
+            val latitud = txtLatitud.text.toString().toFloat()
+            val longitud = txtLongitud.text.toString().toFloat()
 
             // Creacion
             crearDepartamento(
-                Departamento(null, nombre, numHab, numBanos, area, valor),
+                Departamento(null, nombre, numHab, numBanos, area, valor, latitud, longitud),
                 edificio!!.id!!
             )
 
@@ -61,8 +67,7 @@ class CrearDepartamento : AppCompatActivity() {
     fun crearDepartamento(departamento: Departamento, edificioID: String) {
         val docId = FirestoreDB.coleccionEdificio.document().id
         var mensaje = ""
-        FirestoreDB.db
-            .collection("Edificio/${edificioID}/Departamento")
+        FirestoreDB.subcoleccionDepartamento(edificioID)
             .document(docId)
             .set(mapOf(
                 "id" to docId,
@@ -70,7 +75,9 @@ class CrearDepartamento : AppCompatActivity() {
                 "numeroHabitaciones" to departamento.numeroHabitaciones,
                 "numeroBanos" to departamento.numeroBanos,
                 "areaM2" to departamento.areaM2,
-                "valor" to departamento.valor
+                "valor" to departamento.valor,
+                "latitud" to departamento.latitud,
+                "longitud" to departamento.longitud,
             ))
             // Mensaje de retroalimentacion
             .addOnSuccessListener {
@@ -81,12 +88,13 @@ class CrearDepartamento : AppCompatActivity() {
                 txtNumBanos.setText("")
                 txtArea.setText("")
                 txtValor.setText("")
+                txtLatitud.setText("")
+                txtLongitud.setText("")
             }
             .addOnFailureListener {
                 mensaje = "Ha habido un error en la creacion"
             }
             .addOnCompleteListener {
-                // TODO Desbloquear boton de CREAR
                 val msj = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT)
                 msj.show()
             }

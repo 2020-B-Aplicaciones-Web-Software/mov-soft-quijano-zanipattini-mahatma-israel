@@ -49,7 +49,6 @@ class CrearEdificio : AppCompatActivity() {
 
         val btnRegresar = findViewById<Button>(R.id.btn_regresarCrear)
         btnRegresar.setOnClickListener { abrirActividad(MainActivity::class.java) }
-        // TODO Bloquear boton de CREAR si la operacion demora mucho
     }
 
     // Create
@@ -80,7 +79,6 @@ class CrearEdificio : AppCompatActivity() {
                 mensaje = "Ha habido un error en la creacion"
             }
             .addOnCompleteListener {
-                // TODO Desbloquear boton de CREAR
                 val msj = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT)
                 msj.show()
             }

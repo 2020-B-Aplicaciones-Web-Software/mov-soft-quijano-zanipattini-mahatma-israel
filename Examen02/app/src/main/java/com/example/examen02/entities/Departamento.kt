@@ -9,7 +9,9 @@ class Departamento (
     var numeroHabitaciones: Int,
     var numeroBanos: Int,
     var areaM2: Float,
-    var valor: Float
+    var valor: Float,
+    var latitud: Float,
+    var longitud: Float,
 ) : Parcelable {
 
     var edificio: Edificio? = null
@@ -20,7 +22,9 @@ class Departamento (
         parcel.readInt(),
         parcel.readInt(),
         parcel.readFloat(),
-        parcel.readFloat()
+        parcel.readFloat(),
+        parcel.readFloat(),
+        parcel.readFloat(),
     ) {
         edificio = parcel.readParcelable(Edificio::class.java.classLoader)
     }
@@ -29,7 +33,7 @@ class Departamento (
         return "$nombre\n" +
                 "   |-> Habitaciones: $numeroHabitaciones\n" +
                 "   |-> Banos: $numeroBanos\n" +
-                "   |-> Area: $areaM2 m2\n" +
+                "   |-> Area: $areaM2 m²\n" +
                 "   '-> Valor: $$valor"
     }
 
@@ -40,6 +44,8 @@ class Departamento (
         parcel.writeInt(numeroBanos)
         parcel.writeFloat(areaM2)
         parcel.writeFloat(valor)
+        parcel.writeFloat(latitud)
+        parcel.writeFloat(longitud)
         parcel.writeParcelable(edificio, flags)
     }
 

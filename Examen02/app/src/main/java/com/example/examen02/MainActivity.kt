@@ -1,6 +1,5 @@
 package com.example.examen02
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +14,6 @@ import com.example.examen02.view.departamento.ListarDepartamentos
 import com.example.examen02.view.edificio.CrearEdificio
 import com.example.examen02.view.edificio.EditarEdificio
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentReference
 
 class MainActivity : AppCompatActivity() {
 
@@ -87,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                     .document(edificioID)
                     .delete()
                     .addOnSuccessListener {
+                        listaEdificios.removeAt(itemIndex)
                         val msj = Toast.makeText(this, "Registro eliminado", Toast.LENGTH_SHORT)
                         msj.show()
                         actualizarListView()

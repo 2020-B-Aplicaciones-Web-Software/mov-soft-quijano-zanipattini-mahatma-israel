@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_crear_departamento.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_crear_departamento.xml" value="0.33" />
+        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_crear_edificio.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_editar_departamento.xml" value="0.33" />
         <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_editar_edificio.xml" value="0.22" />
         <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_listar_departamentos.xml" value="0.25" />
         <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/activity_mapa_departamento.xml" value="0.22" />
+        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/layout/fragment_maps.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/mahis/Documents/Github/mov-soft-quijano-zanipattini-mahatma-israel/Examen02/app/src/main/res/menu/menu_departamento.xml" value="0.17916666666666667" />
       </map>
     </option>
   </component>

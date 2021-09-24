@@ -8,39 +8,30 @@
 
     <EditText
         android:id="@+id/txt_nombre"
-        android:layout_width="230dp"
-        android:layout_height="44dp"
+        android:layout_width="279dp"
+        android:layout_height="52dp"
         android:ems="10"
+        android:hint="Nombre del edificio"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <EditText
         android:id="@+id/txt_numeroPisos"
-        android:layout_width="109dp"
-        android:layout_height="46dp"
+        android:layout_width="189dp"
+        android:layout_height="49dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Número de pisos"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/txt_nombre"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_nombre"
         app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dirección:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_direccion"
-        app:layout_constraintEnd_toStartOf="@+id/txt_direccion"
-        app:layout_constraintTop_toTopOf="@+id/txt_direccion" />
 
     <EditText
         android:id="@+id/txt_direccion"
@@ -48,75 +39,33 @@
         android:layout_height="47dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Dirección"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/txt_fecha"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_fecha"
         app:layout_constraintTop_toBottomOf="@+id/txt_fecha" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Área (m2):"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_area"
-        app:layout_constraintEnd_toStartOf="@+id/txt_area"
-        app:layout_constraintTop_toTopOf="@+id/txt_area" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_nombre"
-        app:layout_constraintEnd_toStartOf="@+id/txt_nombre"
-        app:layout_constraintTop_toTopOf="@+id/txt_nombre"
-        app:layout_constraintVertical_bias="0.44" />
-
     <EditText
         android:id="@+id/txt_fecha"
-        android:layout_width="162dp"
-        android:layout_height="43dp"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Fecha de apertura (30/12/2000)"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="@+id/txt_area"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_area"
         app:layout_constraintTop_toBottomOf="@+id/txt_area" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha de apertura:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_fecha"
-        app:layout_constraintEnd_toStartOf="@+id/txt_fecha"
-        app:layout_constraintTop_toTopOf="@+id/txt_fecha" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Número de pisos:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_numeroPisos"
-        app:layout_constraintEnd_toStartOf="@+id/txt_numeroPisos"
-        app:layout_constraintTop_toTopOf="@+id/txt_numeroPisos" />
-
     <EditText
         android:id="@+id/txt_area"
-        android:layout_width="110dp"
+        android:layout_width="191dp"
         android:layout_height="44dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Área (m²)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/txt_numeroPisos"
         app:layout_constraintHorizontal_bias="0.0"
@@ -127,26 +76,26 @@
         android:id="@+id/btn_regresarCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
         android:text="Regresar"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/btn_crearEdificio"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_crearEdificio"
-        app:layout_constraintTop_toBottomOf="@+id/btn_crearEdificio" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_crearEdificio"
+        app:layout_constraintStart_toEndOf="@+id/btn_crearEdificio"
+        app:layout_constraintTop_toTopOf="@+id/btn_crearEdificio"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btn_crearEdificio"
         android:layout_width="97dp"
         android:layout_height="52dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         android:text="Crear"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/txt_direccion"
-        app:layout_constraintHorizontal_bias="0.369"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintStart_toStartOf="@+id/txt_direccion"
         app:layout_constraintTop_toBottomOf="@+id/txt_direccion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

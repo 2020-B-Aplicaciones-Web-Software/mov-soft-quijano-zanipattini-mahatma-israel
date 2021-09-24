@@ -23,7 +23,7 @@
     <Button
         android:id="@+id/btn_pantallaCrearDepartamento"
         android:layout_width="200dp"
-        android:layout_height="43dp"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:text="Crear departamento"
         android:textAllCaps="false"
